@@ -15,6 +15,11 @@ module DBus
     # The socket that is used to connect with the bus.
     attr_reader :socket
 
+    # @return [Numeric] Timeout for synchronous calls,
+    # in seconds, fractions possible.
+    # TODO: ensure the default stays infinite. nil? Float::INFINITY?
+    attr_writer :timeout
+
     def initialize(address)
       @address = address
       @buffer = ""

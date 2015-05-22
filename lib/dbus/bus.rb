@@ -186,8 +186,13 @@ module DBus
   class Connection
     # The unique name (by specification) of the message.
     attr_reader :unique_name
-    # pop and push messages here
+    # @return [MessageQueue] pop and push messages here
     attr_reader :message_queue
+
+    # FIXME Forwardable, delegate:
+    def timeout=(t)
+      message_queue.timeout = t
+    end
 
     # Create a new connection to the bus for a given connect _path_. _path_
     # format is described in the D-Bus specification:
